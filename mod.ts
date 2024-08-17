@@ -3,7 +3,8 @@ import { modelFiles } from "./util/modelFiles.ts"
 
 const builder = await KiwiBuilder.create("kiwi/kiwi-wasm.wasm")
 
-console.log("hi")
+console.log(builder.version())
+
 const kiwi = await builder.build({
     modelFiles
 })
