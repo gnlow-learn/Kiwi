@@ -1,9 +1,9 @@
 # Kiwi
 Korean Intelligent Word Identifier
 
-## kiwi-wasm.wasm
-https://esm.sh/kiwi-nlp@0.18.0/dist/kiwi-wasm.wasm
-
-## 상태
-
-포기
+## Preq
+- Download files
+```
+mkdir kiwi
+deno run -A util/load.ts
+```
