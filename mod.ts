@@ -1,4 +1,4 @@
-import { KiwiBuilder, Match } from "npm:kiwi-nlp"
+import { KiwiBuilder, Match } from "kiwi-nlp"
 import { modelFiles } from "./util/modelFiles.ts"
 
 const builder = await KiwiBuilder.create("kiwi/kiwi-wasm.wasm")
