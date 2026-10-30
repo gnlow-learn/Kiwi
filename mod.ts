@@ -1,15 +1,23 @@
-import { KiwiBuilder, Match } from "kiwi-nlp"
+import { KiwiBuilder, Match } from "npm:kiwi-nlp@0.24.1"
 import { modelFiles } from "./util/modelFiles.ts"
+import wasm from "https://esm.sh/kiwi-nlp@0.24.1/dist/kiwi-wasm.wasm" with { type: "bytes" }
 
-const builder = await KiwiBuilder.create("kiwi/kiwi-wasm.wasm")
+const filePath = await Deno.makeTempFile()
+let builder
 
-console.log(builder.version())
+try {
+    await Deno.writeFile(filePath, wasm)
+    
+    builder = await KiwiBuilder.create(filePath)
+} finally {
+    await Deno.remove(filePath)
+}
+
+console.log("kiwi-nlp", builder.version())
 
 const kiwi = await builder.build({
     modelFiles
 })
-
-console.log("hi")
 
 const tokens = kiwi.analyze(
     "다음은 예시 텍스트입니다.",
